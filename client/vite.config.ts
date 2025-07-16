@@ -3,7 +3,7 @@ import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
-import { resolve } from 'node:path'
+//import { resolve } from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +12,7 @@ export default defineConfig({
     viteReact(),
     tailwindcss(),
   ],
-  test: {
+  /*test: {
     globals: true,
     environment: 'jsdom',
   },
@@ -20,5 +20,5 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src'),
     },
-  },
+  },*/
 })
