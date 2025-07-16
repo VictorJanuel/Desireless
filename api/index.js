@@ -2,14 +2,14 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+import express from 'express';
 
-
-const express = require('express');
+//const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World depuis Node.js et Express !');
+app.get('/api', (req, res) => {
+  res.send('Hello World toto depuis Node.js et Express !');
 });
 
 app.listen(port, () => {
