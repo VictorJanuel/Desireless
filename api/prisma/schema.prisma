@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = "mysql://root:root@localhost:3307/desirelessDB"
+}
+
+model Lieu {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  latitude  Float
+  longitude Float
+  depart Trajet[] @relation("depart")
+  arrivee Trajet[] @relation("arrivee")
+}
+
+model Trajet {
+  id     Int     @id @default(autoincrement())
+  lieuDepart Lieu @relation("depart", fields: [lieuDepartId], references: [id])
+  lieuDepartId Int 
+  lieuArrivee Lieu @relation("arrivee", fields: [lieuArriveeId], references: [id])
+  lieuArriveeId Int
+  trajetUser TrajetUser[]
+}
+
+model PointInteret {
+  id      Int      @id @default(autoincrement())
+  information String
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  nom String
+  prenom String
+  pseudo String @unique
+  email   String   @unique
+  trajetUser TrajetUser[]
+}
+
+model TrajetUser {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  trajet Trajet @relation(fields: [trajetId], references: [id])
+  trajetId Int
+  
+  @@unique([userId, trajetId])
+}
