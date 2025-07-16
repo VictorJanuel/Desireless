@@ -51,7 +51,7 @@ const RoutingMachine = ({ start, end, onChange }: Props) => {
     routingControl.addTo(map);
 
     //routingControlRef.current = routingControl;
-    routingControl.on("waypointschanged", function (e: any) {
+    routingControl.on("waypointschanged", function () {
       const waypoints = routingControl.getWaypoints();
       const newStart = [waypoints[0].latLng.lat, waypoints[0].latLng.lng] as LatLngTuple;
       const newEnd = [waypoints[1].latLng.lat, waypoints[1].latLng.lng] as LatLngTuple;
