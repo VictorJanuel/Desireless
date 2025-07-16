@@ -26,14 +26,15 @@ services:
       - frontend
 
   api:
-    build: ./api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     container_name: api
     #ports:
     #  - "3000:3000"
     volumes:
       - ./api:/usr/src
-    working_dir: /usr/src/app
-    command: npm start
+    # working_dir: /usr/src/app
     depends_on:
       - mysql
     networks:
