@@ -1,12 +1,14 @@
-FROM node:24
+FROM node:24-alpine3.21
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+COPY package.json package-lock.json .
+RUN npm ci
 
 COPY . .
 RUN npx prisma generate
 
+# RUN npx prisma generate
+
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
