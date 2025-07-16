@@ -1,0 +1,772 @@
+[
+  {
+    "type": "node",
+    "id": 303075934,
+    "lat": 43.950532,
+    "lon": 4.803147,
+    "tags": {
+      "amenity": "bar",
+      "name": "Le Dandy",
+      "outdoor_seating": "yes",
+      "source": "survey",
+      "survey:date": "2025-04-30",
+      "was:name": "La Marigny"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1500641943,
+    "lat": 43.9365822,
+    "lon": 4.8100656,
+    "tags": {
+      "amenity": "bar",
+      "source": "Guillaumea"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1500648312,
+    "lat": 43.9381602,
+    "lon": 4.8100414,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "54",
+      "addr:street": "Avenue Saint-Ruf",
+      "amenity": "bar",
+      "name": "L’Olympia",
+      "ref:FR:SIRET": "80142654500019",
+      "source": "survey"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1538390436,
+    "lat": 43.948721,
+    "lon": 4.808797,
+    "tags": {
+      "amenity": "bar",
+      "name": "Le Gallia",
+      "source": "survey",
+      "survey:date": "2025-02-24"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1540784842,
+    "lat": 43.945564,
+    "lon": 4.8057471,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "29",
+      "addr:street": "Rue de la République",
+      "amenity": "bar",
+      "check_date": "2025-04-06",
+      "name": "L'Olympic",
+      "ref:FR:SIRET": "74988495300011",
+      "source": "survey"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1763843489,
+    "lat": 43.94737,
+    "lon": 4.803426,
+    "tags": {
+      "amenity": "bar",
+      "name": "Le tom tip",
+      "source": "survey",
+      "survey:date": "2024-11-29"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1796939868,
+    "lat": 43.949377,
+    "lon": 4.811203,
+    "tags": {
+      "amenity": "bar",
+      "name": "Barjoe",
+      "survey:date": "2024-04-19",
+      "was:amenity": "restaurant",
+      "was:name": "Cubanito"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1823360554,
+    "lat": 43.949691,
+    "lon": 4.812193,
+    "tags": {
+      "amenity": "bar",
+      "name": "Bar Bistrot",
+      "source": "survey",
+      "survey:date": "2024-08-02",
+      "was:amenity": "restaurant;fast_food",
+      "was:cuisine": "lebanese",
+      "was:name": "Mezes de Beyrouth;Cosy Food",
+      "wheelchair": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1825085471,
+    "lat": 43.9487431,
+    "lon": 4.8099648,
+    "tags": {
+      "amenity": "bar",
+      "check_date": "2024-02-15",
+      "name": "Au fût et à mesure",
+      "source": "survey",
+      "was:amenity": "ice_cream",
+      "was:name": "Verino glacier"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1825727792,
+    "lat": 43.948228,
+    "lon": 4.80693,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "24",
+      "addr:street": "Place du Change",
+      "amenity": "bar",
+      "name": "Café du change",
+      "opening_hours:signed": "no",
+      "outdoor_seating": "yes",
+      "survey:date": "2024-01-26",
+      "was:name": "Bar du Change"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1826473138,
+    "lat": 43.9507369,
+    "lon": 4.814403,
+    "tags": {
+      "amenity": "bar",
+      "check_date": "2025-07-07",
+      "check_date:opening_hours": "2025-07-07",
+      "indoor_seating": "yes",
+      "name": "Bar tabac Le Square",
+      "opening_hours": "Mo-Fr 06:30-20:00; Sa 07:00-20:00",
+      "outdoor_seating": "yes",
+      "tobacco": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1826480101,
+    "lat": 43.949774,
+    "lon": 4.812679,
+    "tags": {
+      "amenity": "bar",
+      "check_date": "2024-02-17",
+      "name": "Bar le fontenoy",
+      "name:oc": "Bar Lo Fontanés",
+      "source:name:oc": "ieo-bdtopoc"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1826484588,
+    "lat": 43.949752,
+    "lon": 4.812335,
+    "tags": {
+      "amenity": "bar",
+      "indoor_seating": "yes",
+      "name": "Mon bar",
+      "name:oc": "Mon Bar",
+      "outdoor_seating": "yes",
+      "source": "survey",
+      "source:name:oc": "ieo-bdtopoc",
+      "survey:date": "2023-12-18",
+      "wheelchair": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1826502871,
+    "lat": 43.9478323,
+    "lon": 4.8088289,
+    "tags": {
+      "addr:housenumber": "31",
+      "amenity": "bar",
+      "description": "Bar à vin",
+      "name": "Les péquélets",
+      "survey:date": "2023-06-28",
+      "was:amenity": "restaurant",
+      "was:name": "La Cuisine du Dimanche"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1935215541,
+    "lat": 43.9601275,
+    "lon": 4.8615957,
+    "tags": {
+      "amenity": "bar",
+      "name": "PMU",
+      "outdoor_seating": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1935229702,
+    "lat": 43.9617068,
+    "lon": 4.8585823,
+    "tags": {
+      "amenity": "bar",
+      "name": "Bar Le Paris",
+      "outdoor_seating": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1935243385,
+    "lat": 43.9557851,
+    "lon": 4.8428887,
+    "tags": {
+      "amenity": "bar",
+      "name": "Bar Tabac Le Pigeonnier"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1954652148,
+    "lat": 43.943957,
+    "lon": 4.807351,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "74",
+      "addr:street": "Place des Corps Saints",
+      "amenity": "bar",
+      "bar": "wine",
+      "indoor_seating": "yes",
+      "name": "Le 17 Place Aux Vins",
+      "outdoor_seating": "yes",
+      "ref:FR:SIRET": "83481626600029",
+      "source": "survey",
+      "survey:date": "2025-03-18",
+      "was:amenity": "restaurant;bar",
+      "was:name": "Balthazar;Bar Lounge",
+      "wheelchair": "limited"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2059748810,
+    "lat": 43.944587,
+    "lon": 4.807489,
+    "tags": {
+      "amenity": "bar",
+      "brewery": "yes",
+      "indoor_seating": "yes",
+      "name": "Les célestins",
+      "opening_hours": "Mo-Sa 09:00-01:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "source": "survey;local knowledge",
+      "survey:date": "2024-02-20"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2059764393,
+    "lat": 43.944721,
+    "lon": 4.807704,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "11",
+      "addr:street": "Place des Corps Saints",
+      "amenity": "bar",
+      "description": "Bar à vin - restaurant",
+      "name": "Le Wine",
+      "ref:FR:SIRET": "83197214600011",
+      "source": "survey",
+      "survey:date": "2024-02-20",
+      "was:amenity": "restaurant",
+      "was:name": "Wine bar;Macadam Bistrot;Le corps saint",
+      "wheelchair": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2059764922,
+    "lat": 43.944666,
+    "lon": 4.807736,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "15",
+      "addr:street": "Place des Corps Saints",
+      "amenity": "bar",
+      "name": "Le perlier",
+      "ref:FR:SIRET": "91106523300015",
+      "shop": "kiosk",
+      "source": "survey",
+      "survey:date": "2024-05-17",
+      "was:name": "Bar le quenaïs"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2115662480,
+    "lat": 43.9483352,
+    "lon": 4.8107942,
+    "tags": {
+      "amenity": "bar",
+      "indoor_seating": "yes",
+      "name": "Sham’s",
+      "outdoor_seating": "yes",
+      "survey:date": "2022-02-21",
+      "was:name": "Artebar;Thy café",
+      "wheelchair": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2115662826,
+    "lat": 43.9484409,
+    "lon": 4.8105516,
+    "tags": {
+      "alt_name": "Le conservatoire",
+      "amenity": "bar",
+      "indoor_seating": "yes",
+      "name": "Brasserie du Conservatoire",
+      "outdoor_seating": "yes",
+      "source": "survey",
+      "survey:date": "2025-02-24",
+      "wheelchair": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2174786510,
+    "lat": 43.9436519,
+    "lon": 4.8083234,
+    "tags": {
+      "amenity": "bar",
+      "lottery": "yes",
+      "name": "Bar Le Saint-Michel",
+      "outdoor_seating": "yes",
+      "source": "survey",
+      "survey:date": "2020-10-28"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2212797776,
+    "lat": 43.945036,
+    "lon": 4.8096317,
+    "tags": {
+      "amenity": "bar",
+      "name": "Café des Lices",
+      "source": "survey",
+      "survey:date": "2022-02-23"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2212817356,
+    "lat": 43.9501482,
+    "lon": 4.8128684,
+    "tags": {
+      "amenity": "bar",
+      "cuisine": "tapas",
+      "description": "Bar à vin, tapas",
+      "name": "Marion nous",
+      "name:oc": "Marion-se",
+      "source": "survey",
+      "source:name:oc": "ieo-bdtopoc",
+      "survey:date": "2019-09-09",
+      "was:amenity": "restaurant",
+      "was:name": "Entrée des artistes",
+      "wheelchair": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2504759337,
+    "lat": 43.9451041,
+    "lon": 4.8131561,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "41",
+      "addr:street": "Rue des Teinturiers",
+      "amenity": "bar",
+      "name": "La cave des pas sages",
+      "opening_hours": "Mo-Sa 11:00-01:00",
+      "ref:FR:SIRET": "51328469500014",
+      "source": "survey",
+      "survey:date": "2024-01-24"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2524279152,
+    "lat": 43.9468412,
+    "lon": 4.8105253,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housename": "Pub Z",
+      "addr:housenumber": "58",
+      "addr:postcode": "84000",
+      "amenity": "bar",
+      "check_date": "2024-02-17",
+      "description": "Rhumerie Sonore",
+      "name": "Pub Z"
+    }
+  },
+  {
+    "type": "node",
+    "id": 3029498744,
+    "lat": 43.9481433,
+    "lon": 4.8087719,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:postcode": "84000",
+      "addr:street": "Rue du Vieux-Sextier",
+      "amenity": "bar",
+      "name": "Les fistons",
+      "shop": "deli",
+      "source": "survey",
+      "survey:date": "2024-05-22",
+      "was:amenity": "restaurant",
+      "was:cuisine": "italian",
+      "was:name": "Chez les Castagno",
+      "wheelchair": "limited"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4462179314,
+    "lat": 43.9489013,
+    "lon": 4.8088443,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "4",
+      "addr:postcode": "84000",
+      "amenity": "bar",
+      "description": "Bar à shooters, rhums arrangés, rhums.",
+      "email": "avignon@barberousse.com",
+      "name": "Barberousse",
+      "opening_hours": "Tu-Sa 18:00-01:30",
+      "operator": "Franchise Barberousse",
+      "phone": "+33 4 90 87 08 02",
+      "smoking": "isolated",
+      "survey:date": "2023-12-06",
+      "was:name": "Le Barberousse",
+      "website": "http://www.barberousse.com/ville/avignon"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4579530909,
+    "lat": 43.949277,
+    "lon": 4.8106833,
+    "tags": {
+      "amenity": "bar",
+      "gambling": "yes",
+      "name": "Le code bar",
+      "panoramax": "3eb25b24-3ce1-4b86-a941-c7bd0b2c4b35",
+      "shop": "vacant",
+      "source": "survey",
+      "survey:date": "2018-08-14",
+      "tobacco": "yes",
+      "was:name": "Bar Tabac Le Royal"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4843821176,
+    "lat": 43.9480577,
+    "lon": 4.8106925,
+    "tags": {
+      "amenity": "bar",
+      "name": "Laplace",
+      "outdoor_seating": "yes",
+      "source": "Mapillary 2017",
+      "survey:date": "2025-02-24"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4843821178,
+    "lat": 43.9479854,
+    "lon": 4.8106349,
+    "tags": {
+      "amenity": "bar",
+      "description": "Bar-tabac",
+      "name": "Le 3,14",
+      "shop": "lottery",
+      "source": "survey",
+      "survey:date": "2020-10-21",
+      "was:name": "La plantation"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4891301721,
+    "lat": 43.9461018,
+    "lon": 4.8208245,
+    "tags": {
+      "amenity": "bar",
+      "name": "Le Flamarion"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5250401334,
+    "lat": 43.977845,
+    "lon": 4.7879596,
+    "tags": {
+      "amenity": "bar",
+      "name": "Brasserie DUO"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5796147667,
+    "lat": 43.9471447,
+    "lon": 4.806188,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "1",
+      "addr:postcode": "84000",
+      "addr:street": "Rue Mignard",
+      "amenity": "bar",
+      "name": "Le Délirium",
+      "phone": "+33 4 90 85 44 56",
+      "website": "https://www.ledelirium.net/"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6009900237,
+    "lat": 43.9483231,
+    "lon": 4.8076461,
+    "tags": {
+      "amenity": "bar",
+      "bar": "wine_bar",
+      "name": "Tapis rouge",
+      "opening_hours": "Tu-Sa 10:00-24:00",
+      "source": "survey",
+      "survey:date": "2022-02-28",
+      "was:name": "L'ampelos"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6325518425,
+    "lat": 43.95121,
+    "lon": 4.8128668,
+    "tags": {
+      "amenity": "bar",
+      "name": "Bar tabac des Carmes",
+      "name:oc": "Bar tabat dei Carmes",
+      "opening_hours": "Mo,Tu,Th-Sa 07:00-19:30; We off; Su 07:00-13:30",
+      "outdoor_seating": "yes",
+      "source:name:oc": "ieo-bdtopoc",
+      "tobacco": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7876610685,
+    "lat": 43.9488787,
+    "lon": 4.807351,
+    "tags": {
+      "amenity": "bar",
+      "check_date": "2025-04-05",
+      "name": "Beer District"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8031742221,
+    "lat": 43.9474538,
+    "lon": 4.8106238,
+    "tags": {
+      "amenity": "bar",
+      "min_age": "18",
+      "name": "Meltdown",
+      "ref:FR:SIRET": "84081426300025",
+      "source": "survey",
+      "survey:date": "2020-10-21"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9727192425,
+    "lat": 43.9377113,
+    "lon": 4.8036079,
+    "tags": {
+      "addr:city": "Avignon",
+      "addr:housenumber": "10",
+      "addr:street": "Boulevard Jules Ferry",
+      "amenity": "bar",
+      "name": "Le Canari",
+      "ref:FR:SIRET": "38309948800025"
+    }
+  },
+  {
+    "type": "node",
+    "id": 10207518121,
+    "lat": 43.9495726,
+    "lon": 4.8124523,
+    "tags": {
+      "amenity": "bar",
+      "name": "Les Bulles du Pape",
+      "ref:FR:SIRET": "91396004300010",
+      "showcase:left": "4",
+      "survey:date": "2022-11-21"
+    }
+  },
+  {
+    "type": "node",
+    "id": 11082878703,
+    "lat": 43.9636571,
+    "lon": 4.7998194,
+    "tags": {
+      "amenity": "bar",
+      "indoor_seating": "no",
+      "name": "Snack bar vin",
+      "outdoor_seating": "yes"
+    }
+  },
+  {
+    "type": "way",
+    "id": 83762309,
+    "center": {
+      "lat": 43.9534636,
+      "lon": 4.8112688
+    },
+    "nodes": [
+      975403701,
+      975329858,
+      975286644,
+      10578861828,
+      974980376,
+      975403701
+    ],
+    "tags": {
+      "amenity": "bar",
+      "building": "yes",
+      "name": "Grand Bar de la Navigation",
+      "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+      "survey:date": "2025-06-10"
+    }
+  },
+  {
+    "type": "way",
+    "id": 656305229,
+    "center": {
+      "lat": 43.9474814,
+      "lon": 4.81031
+    },
+    "nodes": [
+      6148145705,
+      6148145699,
+      6148145698,
+      6148145702,
+      6148145701,
+      6148145700,
+      6148145705
+    ],
+    "tags": {
+      "amenity": "bar",
+      "indoor": "yes",
+      "level": "0",
+      "name": "ID halles",
+      "room": "shop"
+    }
+  },
+  {
+    "type": "way",
+    "id": 656305232,
+    "center": {
+      "lat": 43.9475311,
+      "lon": 4.8103129
+    },
+    "nodes": [
+      6148145710,
+      6148145709,
+      6148145713,
+      6148145714,
+      6148145710
+    ],
+    "tags": {
+      "amenity": "bar",
+      "indoor": "yes",
+      "level": "0",
+      "name": "ID halles",
+      "room": "shop"
+    }
+  },
+  {
+    "type": "way",
+    "id": 656305248,
+    "center": {
+      "lat": 43.947767,
+      "lon": 4.8101377
+    },
+    "nodes": [
+      6148145760,
+      6148145759,
+      6148145758,
+      6148145757,
+      6148145760
+    ],
+    "tags": {
+      "amenity": "bar",
+      "indoor": "yes",
+      "level": "0",
+      "name": "Chez la p'tite",
+      "room": "shop"
+    }
+  },
+  {
+    "type": "way",
+    "id": 656305252,
+    "center": {
+      "lat": 43.9476509,
+      "lon": 4.8100727
+    },
+    "nodes": [
+      6148145772,
+      6148145771,
+      6148145770,
+      6148145769,
+      6148145772
+    ],
+    "tags": {
+      "amenity": "bar",
+      "indoor": "yes",
+      "level": "0",
+      "name": "La source des halles",
+      "room": "shop"
+    }
+  },
+  {
+    "type": "way",
+    "id": 656781530,
+    "center": {
+      "lat": 43.9476617,
+      "lon": 4.8099971
+    },
+    "nodes": [
+      6152058483,
+      6152058481,
+      6152058480,
+      6152058482,
+      6152058483
+    ],
+    "tags": {
+      "amenity": "bar",
+      "indoor": "yes",
+      "level": "0",
+      "name": "La source des halles",
+      "room": "shop"
+    }
+  }
+]
