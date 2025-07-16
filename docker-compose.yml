@@ -15,7 +15,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./api/app:/usr/src/app
+      - ./api:/usr/src
     working_dir: /usr/src/app
     command: npm start
     depends_on:
@@ -33,3 +33,4 @@ services:
 
 volumes:
   mysql-data:
+  
