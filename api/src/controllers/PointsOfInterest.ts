@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as fs from "fs";
 import { parse } from 'path';
 
-async function getCityCenter(cityName: string): Promise<{ lat: number; lon: number }> {
+export async function getCityCenter(cityName: string): Promise<{ lat: number; lon: number }> {
   const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
   const params = {
     q: cityName,
@@ -20,9 +20,9 @@ async function getCityCenter(cityName: string): Promise<{ lat: number; lon: numb
   const lat = parseFloat(data[0].lat);
   const lon = parseFloat(data[0].lon);
 
-  const cityName_verif = await getCityName(lat, lon);
+  //const cityName_verif = await getCityName(lat, lon);
   
-  console.log(`City center for '${cityName_verif}': lat=${lat}, lon=${lon}`);
+  //console.log(`City center for '${cityName_verif}': lat=${lat}, lon=${lon}`);
   return { lat, lon };
 }
 
@@ -77,8 +77,8 @@ function parserResult(pois: any[]){
 async function getPoisAroundCity(
   lat: number,
   lon: number,
-  radiusKm: number,
-  amenity: string = 'restaurant'
+  amenity: string = 'restaurant',
+  radiusKm: number
 ): Promise<any[]> {
   const OVERPASS_URL = 'http://overpass-api.de/api/interpreter';
   const radiusM = radiusKm * 1000;
@@ -97,10 +97,8 @@ async function getPoisAroundCity(
   return response.data.elements;
 }
 
-export async function fetchPoisForCity(lat: number, lon: number): Promise<any[]> {
-  const city = await getCityName(lat, lon);
-
-  const pois = await getPoisAroundCity(lat, lon, 3, 'bar');
+export async function fetchPoisForCity(lat: number, lon: number, amenity: string, radiusKm: number): Promise<any[]> {
+  const pois = await getPoisAroundCity(lat, lon, amenity, radiusKm);
 
   const pois_result = parserResult(pois);
   // Écrire dans un fichier si besoin
@@ -111,7 +109,7 @@ export async function fetchPoisForCity(lat: number, lon: number): Promise<any[]>
 
 export async function main() {
   try {
-    const pois = await fetchPoisForCity(25, 5);
+    const pois = await fetchPoisForCity(25, 5, 'bar', 2);
     console.log(`Found ${pois.length} POIs`);
   } catch (e: any) {
     console.error(`Error: ${e.message}`);
