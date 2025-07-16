@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 //import express from 'express';
 import express = require('express');
-import { fetchPoisForCity } from './test.js'; // Assuming test.js exports a main function
+import { fetchPoisForCity } from './controllers/PointsOfInterest.js'; // Assuming test.js exports a main function
 
 //import test from 'node:test';
 
