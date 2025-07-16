@@ -16,8 +16,8 @@ services:
   client:
     build: ./client
     container_name: client
-    ports:
-      - "4000:4000"
+    #ports:
+    #  - "4000:4000"
     volumes:
       - ./client:/usr/src
     working_dir: /usr/src/app
@@ -28,8 +28,8 @@ services:
   api:
     build: ./api
     container_name: api
-    ports:
-      - "3000:3000"
+    #ports:
+    #  - "3000:3000"
     volumes:
       - ./api:/usr/src
     working_dir: /usr/src/app
