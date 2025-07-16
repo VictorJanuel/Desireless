@@ -37,6 +37,7 @@ services:
     networks:
       - frontend
       - backend
+    command: ["npm", "run", "dev"]
 
   mysql:
     image: mysql:8.0
