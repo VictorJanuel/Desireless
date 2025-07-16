@@ -1,8 +1,8 @@
 FROM node:24-alpine3.21
 
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 COPY . .
 
 EXPOSE 4000
