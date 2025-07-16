@@ -2,7 +2,9 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-
+prisma.user.findMany(
+  {where: {prenom: {}}}
+);
 
 const express = require('express');
 const app = express();
