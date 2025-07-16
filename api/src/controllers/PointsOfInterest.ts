@@ -1,30 +1,4 @@
 import axios from 'axios';
-import * as fs from "fs";
-import { parse } from 'path';
-
-export async function getCityCenter(cityName: string): Promise<{ lat: number; lon: number }> {
-  const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
-  const params = {
-    q: cityName,
-    format: 'json',
-    limit: 1,
-  };
-  const response = await axios.get(NOMINATIM_URL, {
-    params,
-    headers: { 'User-Agent': 'POI-App' },
-  });
-  const data = response.data;
-  if (!data || data.length === 0) {
-    throw new Error(`City '${cityName}' not found.`);
-  }
-  const lat = parseFloat(data[0].lat);
-  const lon = parseFloat(data[0].lon);
-
-  //const cityName_verif = await getCityName(lat, lon);
-  
-  //console.log(`City center for '${cityName_verif}': lat=${lat}, lon=${lon}`);
-  return { lat, lon };
-}
 
 interface Tags {
   name?: string;
@@ -41,11 +15,11 @@ interface Poi {
   type: "node";
   lat: number;
   lon: number;
-  tags?: Tags
+  tags?: Tags;
 }
 
-function parserResult(pois: any[]){
-  const pois_result: Poi[] = pois
+function parserResult(pois: any[]): Poi[] {
+  return pois
     .filter(poi => poi.type === 'node')
     .map(poi => {
       const tags = poi.tags
@@ -57,7 +31,7 @@ function parserResult(pois: any[]){
             city: poi.tags['addr:city'],
             housenumber: poi.tags['addr:housenumber'],
             postcode: poi.tags['addr:postcode'],
-            street: poi.tags['addr:street']
+            street: poi.tags['addr:street'],
           }
         : undefined;
 
@@ -65,23 +39,20 @@ function parserResult(pois: any[]){
         type: poi.type,
         lat: poi.lat,
         lon: poi.lon,
-        tags
-      } satisfies Poi;
+        tags,
+      };
     });
-
-  console.log(pois_result)
-  return pois_result;
 }
-
 
 async function getPoisAroundCity(
   lat: number,
   lon: number,
   amenity: string = 'restaurant',
-  radiusKm: number
+  radiusKm: number = 2
 ): Promise<any[]> {
   const OVERPASS_URL = 'http://overpass-api.de/api/interpreter';
   const radiusM = radiusKm * 1000;
+
   const query = `
     [out:json];
     (
@@ -91,27 +62,20 @@ async function getPoisAroundCity(
     );
     out center;
   `;
+
   const response = await axios.post(OVERPASS_URL, `data=${encodeURIComponent(query)}`, {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   });
+
   return response.data.elements;
 }
 
-export async function fetchPoisForCity(lat: number, lon: number, amenity: string, radiusKm: number): Promise<any[]> {
+export async function fetchPoisForCity(
+  lat: number,
+  lon: number,
+  amenity: string = 'restaurant',
+  radiusKm: number = 2
+): Promise<Poi[]> {
   const pois = await getPoisAroundCity(lat, lon, amenity, radiusKm);
-
-  const pois_result = parserResult(pois);
-  // Écrire dans un fichier si besoin
-  //fs.writeFileSync('sample.json', JSON.stringify(pois, null, 2), { encoding: 'utf-8' });
-
-  return pois_result;
-}
-
-export async function main() {
-  try {
-    const pois = await fetchPoisForCity(25, 5, 'bar', 2);
-    console.log(`Found ${pois.length} POIs`);
-  } catch (e: any) {
-    console.error(`Error: ${e.message}`);
-  }
+  return parserResult(pois);
 }

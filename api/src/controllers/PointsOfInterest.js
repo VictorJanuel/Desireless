@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchPoisForCity = fetchPoisForCity;
+exports.getCityName = getCityName;
 exports.main = main;
 const axios_1 = __importDefault(require("axios"));
 async function getCityCenter(cityName) {
