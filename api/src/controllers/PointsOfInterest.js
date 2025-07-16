@@ -25,6 +25,27 @@ async function getCityCenter(cityName) {
     const lon = parseFloat(data[0].lon);
     return { lat, lon };
 }
+async function getCityName(lat, lon) {
+    const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse';
+    const params = {
+        lat,
+        lon,
+        format: 'json',
+    };
+    const response = await axios_1.default.get(NOMINATIM_URL, {
+        params,
+        headers: { 'User-Agent': 'POI-App' },
+    });
+    const data = response.data;
+    if (!data || !data.address) {
+        throw new Error(`No address found for coordinates: ${lat}, ${lon}`);
+    }
+    const city = data.address.city || data.address.town || data.address.village || data.address.hamlet;
+    if (!city) {
+        throw new Error(`City not found in address data for coordinates: ${lat}, ${lon}`);
+    }
+    return city;
+}
 function parserResult(pois) {
     const pois_result = pois
         .filter(poi => poi.type === 'node')
@@ -68,9 +89,9 @@ async function getPoisAroundCity(lat, lon, radiusKm, amenity = 'restaurant') {
     });
     return response.data.elements;
 }
-async function fetchPoisForCity(cityName, amenity = 'bar', radiusKm = 5) {
-    const { lat, lon } = await getCityCenter(cityName);
-    const pois = await getPoisAroundCity(lat, lon, radiusKm, amenity);
+async function fetchPoisForCity(lat, lon) {
+    const city = await getCityName(lat, lon);
+    const pois = await getPoisAroundCity(lat, lon, 3, 'bar');
     const pois_result = parserResult(pois);
     // Écrire dans un fichier si besoin
     //fs.writeFileSync('sample.json', JSON.stringify(pois, null, 2), { encoding: 'utf-8' });
@@ -78,7 +99,7 @@ async function fetchPoisForCity(cityName, amenity = 'bar', radiusKm = 5) {
 }
 async function main() {
     try {
-        const pois = await fetchPoisForCity('Avignon', 'bar', 5);
+        const pois = await fetchPoisForCity(25, 5);
         console.log(`Found ${pois.length} POIs`);
     }
     catch (e) {
