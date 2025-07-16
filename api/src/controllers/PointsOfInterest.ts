@@ -19,36 +19,12 @@ async function getCityCenter(cityName: string): Promise<{ lat: number; lon: numb
   }
   const lat = parseFloat(data[0].lat);
   const lon = parseFloat(data[0].lon);
+
+  const cityName_verif = await getCityName(lat, lon);
+  
+  console.log(`City center for '${cityName_verif}': lat=${lat}, lon=${lon}`);
   return { lat, lon };
 }
-
-async function getCityName(lat: number, lon: number): Promise<string> {
-  const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse';
-  const params = {
-    lat,
-    lon,
-    format: 'json',
-  };
-  const response = await axios.get(NOMINATIM_URL, {
-    params,
-    headers: { 'User-Agent': 'POI-App' },
-  });
-
-  const data = response.data;
-
-  if (!data || !data.address) {
-    throw new Error(`No address found for coordinates: ${lat}, ${lon}`);
-  }
-
-  const city = data.address.city || data.address.town || data.address.village || data.address.hamlet;
-
-  if (!city) {
-    throw new Error(`City not found in address data for coordinates: ${lat}, ${lon}`);
-  }
-
-  return city;
-}
-
 
 interface Tags {
   name?: string;
