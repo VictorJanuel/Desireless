@@ -45,7 +45,9 @@ const RoutingMachine = ({ start, end, onChange }: Props) => {
       routeWhileDragging: true,
       fitSelectedRoutes: true,
       showAlternatives: false,
-      autoRoute: true
+      autoRoute: true,
+      show: false,  // Empêche le panneau d'instructions
+      createMarker: () => null  // Empêche l'ajout des marqueurs automatiques
     });
     
     routingControl.addTo(map);
