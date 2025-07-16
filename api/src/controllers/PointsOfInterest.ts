@@ -22,6 +22,34 @@ async function getCityCenter(cityName: string): Promise<{ lat: number; lon: numb
   return { lat, lon };
 }
 
+async function getCityName(lat: number, lon: number): Promise<string> {
+  const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse';
+  const params = {
+    lat,
+    lon,
+    format: 'json',
+  };
+  const response = await axios.get(NOMINATIM_URL, {
+    params,
+    headers: { 'User-Agent': 'POI-App' },
+  });
+
+  const data = response.data;
+
+  if (!data || !data.address) {
+    throw new Error(`No address found for coordinates: ${lat}, ${lon}`);
+  }
+
+  const city = data.address.city || data.address.town || data.address.village || data.address.hamlet;
+
+  if (!city) {
+    throw new Error(`City not found in address data for coordinates: ${lat}, ${lon}`);
+  }
+
+  return city;
+}
+
+
 interface Tags {
   name?: string;
   amenity?: string;
@@ -93,9 +121,10 @@ async function getPoisAroundCity(
   return response.data.elements;
 }
 
-export async function fetchPoisForCity(cityName: string, amenity = 'bar', radiusKm = 5): Promise<any[]> {
-  const { lat, lon } = await getCityCenter(cityName);
-  const pois = await getPoisAroundCity(lat, lon, radiusKm, amenity);
+export async function fetchPoisForCity(lat: number, lon: number): Promise<any[]> {
+  const city = await getCityName(lat, lon);
+
+  const pois = await getPoisAroundCity(lat, lon, 3, 'bar');
 
   const pois_result = parserResult(pois);
   // Écrire dans un fichier si besoin
@@ -106,7 +135,7 @@ export async function fetchPoisForCity(cityName: string, amenity = 'bar', radius
 
 export async function main() {
   try {
-    const pois = await fetchPoisForCity('Avignon', 'bar', 5);
+    const pois = await fetchPoisForCity(25, 5);
     console.log(`Found ${pois.length} POIs`);
   } catch (e: any) {
     console.error(`Error: ${e.message}`);
