@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-routing-machine";
+import { CustomOSRM } from "../services/osrm/customOSRM";
 
 declare module 'leaflet' {
   namespace Routing {
@@ -36,31 +37,38 @@ const RoutingMachine = ({ start, end, onChange }: Props) => {
       }
     }
 
-    // Créer nouvelle instance
+
+
     const routingControl = L.Routing.control({
-      waypoints: [L.latLng(start), L.latLng(end)],
+      waypoints: [
+        L.latLng(start),
+        L.latLng(end),
+      ],
       lineOptions: { styles: [{ color: "#6FA1EC", weight: 4 }] },
-      serviceUrl: 'localhost:5000/route/v1/',
       addWaypoints: false,
       draggableWaypoints: true,
       routeWhileDragging: true,
       fitSelectedRoutes: true,
       showAlternatives: false,
-      autoRoute: true,
-      show: false,  // Empêche le panneau d'instructions
-      createMarker: () => null  // Empêche l'ajout des marqueurs automatiques
+      serviceUrl: 'http://localhost/api/route'
+      //router: new CustomOSRM(), // 🔥 ICI l'utilisation de ton proxy
     });
-    
+    console.log(routingControl)
+     
+
+
     routingControl.addTo(map);
 
+
+
     //routingControlRef.current = routingControl;
-    routingControl.on("waypointschanged", function () {
+     routingControl.on("waypointschanged", function () {
       const waypoints = routingControl.getWaypoints();
       const newStart = [waypoints[0].latLng.lat, waypoints[0].latLng.lng] as LatLngTuple;
       const newEnd = [waypoints[1].latLng.lat, waypoints[1].latLng.lng] as LatLngTuple;
       onChange(newStart, newEnd);
     });
-
+ 
     return () => {
       map.removeControl(routingControl);
     };
