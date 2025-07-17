@@ -7,7 +7,7 @@
     "start": "vite --host 0.0.0.0 --port 4000",
     "build": "vite build && tsc",
     "serve": "vite preview",
-    "test": "vitest run", 
+    "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
     "check": "prettier --write . && eslint --fix"
@@ -22,6 +22,7 @@
     "@tanstack/react-router": "^1.121.2",
     "@tanstack/react-router-devtools": "^1.121.2",
     "@tanstack/router-plugin": "^1.121.2",
+    "better-auth": "^1.2.12",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^3.2.0",
     "leaflet-geosearch": "^3.0.0",

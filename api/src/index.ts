@@ -9,7 +9,7 @@ export const prisma = new PrismaClient();
 const app = express();
 app.use(cors());
 
-app.all("/api/auth/*", toNodeHandler(auth));
+app.all("/auth/*", toNodeHandler(auth));
 
 app.get('/getPois', async (req: Request, res: Response) => {
   const { lat, lon, amenity = 'restaurant', radius = '10' } = req.query;
