@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchPoisForCity = fetchPoisForCity;
-exports.getCityName = getCityName;
 exports.main = main;
 const axios_1 = __importDefault(require("axios"));
 async function getCityCenter(cityName) {
@@ -24,8 +23,6 @@ async function getCityCenter(cityName) {
     }
     const lat = parseFloat(data[0].lat);
     const lon = parseFloat(data[0].lon);
-    const cityName_verif = await getCityName(lat, lon);
-    console.log(`City center for '${cityName_verif}': lat=${lat}, lon=${lon}`);
     return { lat, lon };
 }
 async function getCityName(lat, lon) {
