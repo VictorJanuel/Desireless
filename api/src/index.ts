@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 app.get('/getPois', async (req: Request, res: Response) => {
-  const { lat, lon, amenity = 'restaurant', radius = '10' } = req.query;
+  const { lat, lon, amenity, radius} = req.query;
 
   if (!lat || !lon) {
     return res.status(400).send('Latitude et longitude doivent être définis.');
@@ -27,6 +27,6 @@ app.get('/getPois', async (req: Request, res: Response) => {
 });
 
 
-app.listen(3001, () => {
-  console.log('Serveur démarré sur le port 3001');
+app.listen(3000, () => {
+  console.log('Serveur démarré sur le port 3000');
 });
