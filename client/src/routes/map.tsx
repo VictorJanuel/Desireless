@@ -3,13 +3,34 @@ import { MapContainer } from 'react-leaflet'
 import { Marker, Popup, TileLayer } from 'react-leaflet'
 import type { LatLngTuple } from 'leaflet'
 import { useState } from 'react'
-import RoutingMachine from './routingMachine'
+import RoutingMachine from '../components/routingMachine'
+import LatLong from '../components/latLong'
+import ButtonPOI from '../components/buttonPOI'
 
 const position: LatLngTuple = [51.505, -0.09]
 
 export const Route = createFileRoute('/map')({
   component: Map,
 })
+
+  const handleShowPoints = async () => {
+    console.log("Affichage des points d'intérêt ahfjvkzhevfa b");
+    const maLat=48.8566;
+    const maLon=2.3522;
+    console.log("Lat:", maLat, "Lon:", maLon);
+    try {
+      const res = await fetch("http://localhost:3001/getPois?lat="+maLat+"&lon="+maLon);
+      const data = await res.json();
+      console.log("Points d'intérêt récupérés :", data);
+      for (const poi of data) {
+        const marker = L.marker([poi.lat, poi.lon]).bindPopup(poi.name || "Point d'intérêt");
+
+        marker.addTo(map); // 👈 ajoute chaque marker à la carte
+      }
+    } catch (err) {
+      console.error("Erreur API :", err);
+    }
+  };
 
 function Map() {
 
@@ -25,44 +46,8 @@ function Map() {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <div style={{ position: "absolute", zIndex: 1000, padding: 10, background: "white" }}>
-        <label>
-          Start Latitude:
-          <input
-            type="number"
-            value={start[0]}
-            onChange={(e) => setStart([parseFloat(e.target.value), start[1]])}
-          />
-        </label>
-        <label>
-          Start Longitude:
-          <input
-            type="number"
-            value={start[1]}
-            onChange={(e) => {
-                setStart([start[0], parseFloat(e.target.value)]);
-            }}
-          />
-        </label>
-        <label>
-          End Latitude:
-          <input
-            type="number"
-            value={end[0]}
-            onChange={(e) => setEnd([parseFloat(e.target.value), end[1]])}
-          />
-        </label>
-        <label>
-          End Longitude:
-          <input
-            type="number"
-            value={end[1]}
-            onChange={(e) => setEnd([end[0], parseFloat(e.target.value)])}
-          />
-        </label>
-      </div>
-
+    <div>
+        <LatLong start={start} end={end} onChange={handleChange} />
         <MapContainer center={position} zoom={5} scrollWheelZoom={false} style={{ height: '100vh', width: '100%' }}>
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -72,6 +57,7 @@ function Map() {
             <Popup>A pretty CSS3 popup. <br /> Easily customizable.</Popup>
         </Marker>
         <RoutingMachine start={start} end={end} onChange={handleChange} />
+        <ButtonPOI onClick={handleShowPoints} />
         </MapContainer>
     </div>
   )
