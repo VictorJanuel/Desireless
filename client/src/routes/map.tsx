@@ -29,6 +29,7 @@ export const Route = createFileRoute('/map')({
     }
   };
 
+
 function Map() {
   const buttonStyle: React.CSSProperties = {
     color: 'white',
