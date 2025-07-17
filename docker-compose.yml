@@ -34,6 +34,7 @@ services:
       - /app/node_modules
     depends_on:
       - mysql
+      - osrm-backend
     networks:
       - frontend
       - backend
@@ -47,6 +48,19 @@ services:
       MYSQL_PASSWORD: user
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - backend
+
+
+  osrm-backend:
+    image: osrm/osrm-backend
+    container_name: osrm-backend
+    volumes:
+      - ./osrm/data:/data
+    expose:
+      - "5000"
+    command: >
+      osrm-routed --algorithm mld /data/rhone-alpes-latest.osrm
     networks:
       - backend
 
