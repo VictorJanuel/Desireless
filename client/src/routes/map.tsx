@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from 'react-leaflet';
 import type { LatLngTuple } from 'leaflet';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RoutingMachine from '../components/routingMachine';
 import CitySearch from '../components/CitySearch';
 import L from 'leaflet';
@@ -65,6 +65,9 @@ function Map() {
   const [end, setEnd] = useState<LatLngTuple | null>(null);
   const [cityNameStart, setCityNameStart] = useState('');
   const [cityNameEnd, setCityNameEnd] = useState('');
+  const [radiusStart, setRadiusStart] = useState<number>(5); // en km
+  const [radiusEnd, setRadiusEnd] = useState<number>(5);
+
 
   // State POIs par catégorie
   const [poisByCategory, setPoisByCategory] = useState<Record<string, any[]>>({});
@@ -83,15 +86,16 @@ function Map() {
   };
 
   // Fonction pour fetch les POIs par catégorie
-  const fetchPOIs = async (lat: number, lon: number, amenity: string) => {
+  const fetchPOIs = async (lat: number, lon: number, amenity: string, radius: number) => {
     const params = new URLSearchParams({
       lat: lat.toString(),
       lon: lon.toString(),
       amenity,
-      radius: '5',
+      radius: radius.toString(),
     });
 
-    const url = `http://localhost/api/getPois?${params.toString()}`;
+    const url = `/api/getPois?${params.toString()}`;
+    console.log(url);
     const res = await fetch(url);
     if (!res.ok) {
       console.error('Erreur HTTP:', res.status, res.statusText);
@@ -117,8 +121,8 @@ function Map() {
       });
     } else {
       // On fetch et ajoute la catégorie + ses POIs
-      const poisStart = start ? await fetchPOIs(start[0], start[1], amenity) : [];
-      const poisEnd = end ? await fetchPOIs(end[0], end[1], amenity) : [];
+      const poisStart = start ? await fetchPOIs(start[0], start[1], amenity, radiusStart) : [];
+      const poisEnd = end ? await fetchPOIs(end[0], end[1], amenity, radiusEnd) : [];
       const allPois = [...poisStart, ...poisEnd];
 
       setPoisByCategory((prev) => ({
@@ -128,6 +132,28 @@ function Map() {
       setActiveAmenities((prev) => [...prev, amenity]);
     }
   };
+
+  const refreshPOIs = async () => {
+    if (!start && !end) return;
+
+    const updatedPoisByCategory: Record<string, any[]> = {};
+
+    for (const amenity of activeAmenities) {
+      const poisStart = start ? await fetchPOIs(start[0], start[1], amenity, radiusStart) : [];
+      const poisEnd = end ? await fetchPOIs(end[0], end[1], amenity, radiusEnd) : [];
+      updatedPoisByCategory[amenity] = [...poisStart, ...poisEnd];
+    }
+
+    setPoisByCategory(updatedPoisByCategory);
+  };
+
+
+  useEffect(() => {
+    if (activeAmenities.length > 0) {
+      refreshPOIs();
+    }
+  }, [radiusStart, radiusEnd, start, end]); 
+
 
   function handleChange(start: LatLngTuple, end: LatLngTuple): void {
     throw new Error('Function not implemented.');
@@ -222,9 +248,34 @@ function Map() {
         <p>
           <strong>Départ:</strong> {cityNameStart}
         </p>
+        {start && (
+          <div>
+            Rayon: {radiusStart} km
+            <input
+              type="range"
+              min={1}
+              max={20}
+              value={radiusStart}
+              onChange={(e) => setRadiusStart(Number(e.target.value))}
+            />
+          </div>
+        )}
+
         <p>
           <strong>Arrivée:</strong> {cityNameEnd}
         </p>
+        {end && (
+          <div>
+            Rayon: {radiusEnd} km
+            <input
+              type="range"
+              min={1}
+              max={20}
+              value={radiusEnd}
+              onChange={(e) => setRadiusEnd(Number(e.target.value))}
+            />
+          </div>
+        )}
 
         <h3>Points d'intérêt</h3>
 

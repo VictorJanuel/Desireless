@@ -26,6 +26,11 @@ app.get('/getPois', async (req: Request, res: Response) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
+
+
 
 app.listen(3000, () => {
   console.log('Serveur démarré sur le port 3000');
