@@ -10,6 +10,7 @@ export const Route = createFileRoute('/map')({
   component: Map,
 });
 
+<<<<<<< HEAD
 function Map() {
   const buttonStyle: React.CSSProperties = {
     color: 'white',
@@ -200,6 +201,58 @@ function Map() {
               </Marker>
             );
           })}
+=======
+
+
+function Map() {
+
+  const [start, setStart] = useState<LatLngTuple>([48.8566, 2.3522]) // Paris
+  const [end, setEnd] = useState<LatLngTuple>([45.7640, 4.8357])     // Lyon
+  const [markers, setMarkers] = useState<{ position: LatLngTuple; popup: string }[]>([]);
+
+  const handleChange = (newStart: LatLngTuple, newEnd: LatLngTuple) => {
+    console.log("Start Longitude changed:", newStart);
+    console.log("Start Longitude changed:", newEnd);
+    setStart(newStart);
+    setEnd(newEnd);
+  };
+
+  const handleShowPoints = async () => {
+    console.log("Affichage des points d'intérêt ahfjvkzhevfa b");
+    const maLat=48.8566;
+    const maLon=2.3522;
+    console.log("Lat:", maLat, "Lon:", maLon);
+    try {
+      const res = await fetch("http://localhost:3001/getPois?lat="+maLat+"&lon="+maLon);
+      const data = await res.json();
+      console.log("Points d'intérêt récupérés :", data);
+      const newMarkers = data.map((poi: any) => ({
+        position: [poi.lat, poi.lon] as LatLngTuple,
+        popup: poi.name || "Point d'intérêt",
+      }));
+
+        setMarkers(newMarkers);
+    } catch (err) {
+      console.error("Erreur API :", err);
+    }
+  };
+
+  return (
+    <div>
+        <LatLong start={start} end={end} onChange={handleChange} />
+        <MapContainer center={position} zoom={5} scrollWheelZoom={false} style={{ height: '100vh', width: '100%' }}>
+        <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {markers.map((marker, index) => (
+            <Marker key={index} position={marker.position}>
+                <Popup>{marker.popup}</Popup>
+            </Marker>
+        ))}
+        <RoutingMachine start={start} end={end} onChange={handleChange} />
+        <ButtonPOI onClick={handleShowPoints} />
+>>>>>>> 46843cd (oubli)
         </MapContainer>
       </div>
 
