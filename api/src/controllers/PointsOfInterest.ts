@@ -47,7 +47,7 @@ function parserResult(pois: any[]): Poi[] {
 async function getPoisAroundCity(
   lat: number,
   lon: number,
-  amenity: string = 'restaurant',
+  amenity: string,
   radiusKm: number = 2
 ): Promise<any[]> {
   const OVERPASS_URL = 'http://overpass-api.de/api/interpreter';
@@ -73,7 +73,7 @@ async function getPoisAroundCity(
 export async function fetchPoisForCity(
   lat: number,
   lon: number,
-  amenity: string = 'restaurant',
+  amenity: string,
   radiusKm: number = 2
 ): Promise<Poi[]> {
   const pois = await getPoisAroundCity(lat, lon, amenity, radiusKm);
