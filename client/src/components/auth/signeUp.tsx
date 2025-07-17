@@ -106,14 +106,17 @@ export default function SignUp(props: { authClient: AuthClient }) {
       setNameErrorMessage('');
     }
 
+    console.log("is valid:", isValid);
     return isValid;
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    if (nameError || emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
+    console.log("Submiting form");
+    // if (nameError || emailError || passwordError) {
+    //   event.preventDefault();
+    //   return;
+    // }
+    event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       name: data.get('name'),
@@ -125,99 +128,117 @@ export default function SignUp(props: { authClient: AuthClient }) {
       email: data.get('email') as string,
       password: data.get('password') as string,
       name: data.get('name') as string,
-    }).catch((error) => {
-      console.error("Sign up error:", error);
-      setEmailError(true);
-      setEmailErrorMessage('An error occurred during sign up. Please try again.');
+    }, {
+      onRequest: (ctx) => {
+        //show loading
+        console.log("Signing up", ctx);
+      },
+      onSuccess: (ctx) => {
+        //redirect to the dashboard or sign in page
+        console.log("Sign up successful", ctx);
+      },
+      onError: (ctx) => {
+        // display the error message
+        alert(ctx.error.message);
+      },
     })
+      .then((res) => {
+        console.log("Sign up successful", res);
+        // Optionally redirect or show a success message
+      })
+      .catch((error) => {
+        console.error("Sign up error:", error);
+        setEmailError(true);
+        setEmailErrorMessage('An error occurred during sign up. Please try again.');
+      })
   };
 
   return (
-      <SignUpContainer direction="column" justifyContent="space-between">
-        <Card variant="outlined">
-          <Typography
-            component="h1"
-            variant="h4"
-            sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+    <SignUpContainer direction="column" justifyContent="space-between">
+      <Card variant="outlined">
+        <Typography
+          component="h1"
+          variant="h4"
+          sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+        >
+          Sign up
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+        >
+          <FormControl>
+            <FormLabel htmlFor="name">Full name</FormLabel>
+            <TextField
+              autoComplete="name"
+              name="name"
+              required
+              fullWidth
+              id="name"
+              placeholder="Jon Snow"
+              error={nameError}
+              helperText={nameErrorMessage}
+              color={nameError ? 'error' : 'primary'}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <TextField
+              required
+              fullWidth
+              id="email"
+              placeholder="your@email.com"
+              name="email"
+              autoComplete="email"
+              variant="outlined"
+              error={emailError}
+              helperText={emailErrorMessage}
+              color={passwordError ? 'error' : 'primary'}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <TextField
+              required
+              fullWidth
+              name="password"
+              placeholder="••••••"
+              type="password"
+              id="password"
+              autoComplete="new-password"
+              variant="outlined"
+              error={passwordError}
+              helperText={passwordErrorMessage}
+              color={passwordError ? 'error' : 'primary'}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="password">Confirm password</FormLabel>
+            <TextField
+              required
+              fullWidth
+              name="passwordConfirm"
+              placeholder="••••••"
+              type="password"
+              id="passwordConfirm"
+              autoComplete="new-password"
+              variant="outlined"
+              error={passwordConfirmError}
+              helperText={passwordConfirmErrorMessage}
+              color={passwordError ? 'error' : 'primary'}
+            />
+          </FormControl>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            onClick={validateInputs}
           >
             Sign up
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
-          >
-            <FormControl>
-              <FormLabel htmlFor="name">Full name</FormLabel>
-              <TextField
-                autoComplete="name"
-                name="name"
-                required
-                fullWidth
-                id="name"
-                placeholder="Jon Snow"
-                error={nameError}
-                helperText={nameErrorMessage}
-                color={nameError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="email">Email</FormLabel>
-              <TextField
-                required
-                fullWidth
-                id="email"
-                placeholder="your@email.com"
-                name="email"
-                autoComplete="email"
-                variant="outlined"
-                error={emailError}
-                helperText={emailErrorMessage}
-                color={passwordError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <TextField
-                required
-                fullWidth
-                name="password"
-                placeholder="••••••"
-                type="password"
-                id="password"
-                autoComplete="new-password"
-                variant="outlined"
-                error={passwordError}
-                helperText={passwordErrorMessage}
-                color={passwordError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="password">Confirm password</FormLabel>
-              <TextField
-                required
-                fullWidth
-                name="passwordConfirm"
-                placeholder="••••••"
-                type="password"
-                id="passwordConfirm"
-                autoComplete="new-password"
-                variant="outlined"
-                error={passwordConfirmError}
-                helperText={passwordConfirmErrorMessage}
-                color={passwordError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              onClick={validateInputs}
-            >
-              Sign up
-            </Button>
-          </Box>
-        </Card>
-      </SignUpContainer>
+          </Button>
+        </Box>
+      </Card>
+    </SignUpContainer>
   );
 }
