@@ -1,10 +1,27 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { fetchPoisForCity } from './controllers/PointsOfInterest';
-import { Http2ServerRequest } from 'http2';
+import session from "express-session";
+import path from "path";
+import bodyParser from "body-parser";
+import * as dotenv from "dotenv";
+import * as passportConfig from "./config/passport";
+
+dotenv.config();
 
 const app = express();
+app.use(express.json());
+app.use(express.static('public')); // Serve static files from the public directory
 app.use(cors());
+app.use(session({
+    secret: "keyboard-cat",
+    resave: true,
+    saveUninitialized: true,
+}))
+
+passportConfig.configure(app);
+
+
 
 app.get('/getPois', async (req: Request, res: Response) => {
   const { lat, lon, amenity, radius} = req.query;
