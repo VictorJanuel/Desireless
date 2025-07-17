@@ -6,6 +6,7 @@ import path from "path";
 import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import * as passportConfig from "./config/passport";
+import * as routers from "./routes";
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ app.use(session({
 
 passportConfig.configure(app);
 
-
+app.use("/auth", routers.auth);
 
 app.get('/getPois', async (req: Request, res: Response) => {
   const { lat, lon, amenity, radius} = req.query;
