@@ -50,6 +50,8 @@ services:
       - mysql-data:/var/lib/mysql
     networks:
       - backend
+    ports:
+      - "3306:3306"
 
 volumes:
   mysql-data:

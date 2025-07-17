@@ -1,9 +1,15 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { fetchPoisForCity } from './controllers/PointsOfInterest';
+import { PrismaClient } from '@prisma/client';
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./lib/auth";
+export const prisma = new PrismaClient();
 
 const app = express();
 app.use(cors());
+
+app.all("/api/auth/*", toNodeHandler(auth));
 
 app.get('/getPois', async (req: Request, res: Response) => {
   const { lat, lon, amenity = 'restaurant', radius = '10' } = req.query;
@@ -27,6 +33,6 @@ app.get('/getPois', async (req: Request, res: Response) => {
 });
 
 
-app.listen(3001, () => {
-  console.log('Serveur démarré sur le port 3001');
+app.listen(3000, () => {
+  console.log('Serveur démarré sur le port 3000');
 });
