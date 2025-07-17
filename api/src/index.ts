@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { fetchPoisForCity } from './controllers/PointsOfInterest';
+import { fetchPoisForCity } from './controllers/pointOfInterest.controller';
 import { Http2ServerRequest } from 'http2';
 
 const app = express();
