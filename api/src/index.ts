@@ -16,9 +16,9 @@ app.get('/getPois', async (req: Request, res: Response) => {
   try {
     const pois = await fetchPoisForCity(
       parseFloat(lat as string),
-      parseFloat(lon as string)
-      //amenity as string,
-      //parseFloat(radius as string)
+      parseFloat(lon as string),
+      amenity as string,
+      parseFloat(radius as string)
     );
     res.json(pois);
   } catch (error) {

@@ -101,8 +101,8 @@ function parserResult(pois: any[]){
 async function getPoisAroundCity(
   lat: number,
   lon: number,
-  radiusKm: number,
-  amenity: string = 'restaurant'
+  amenity: string,
+  radiusKm: number
 ): Promise<any[]> {
   const OVERPASS_URL = 'http://overpass-api.de/api/interpreter';
   const radiusM = radiusKm * 1000;
@@ -121,10 +121,10 @@ async function getPoisAroundCity(
   return response.data.elements;
 }
 
-export async function fetchPoisForCity(lat: number, lon: number): Promise<any[]> {
+export async function fetchPoisForCity(lat: number, lon: number, amenity: string, radiusKm: number): Promise<any[]> {
   const city = await getCityName(lat, lon);
 
-  const pois = await getPoisAroundCity(lat, lon, 3, 'bar');
+  const pois = await getPoisAroundCity(lat, lon, amenity, radiusKm);
 
   const pois_result = parserResult(pois);
   // Écrire dans un fichier si besoin
@@ -133,11 +133,11 @@ export async function fetchPoisForCity(lat: number, lon: number): Promise<any[]>
   return pois_result;
 }
 
-export async function main() {
+/*export async function main() {
   try {
     const pois = await fetchPoisForCity(25, 5);
     console.log(`Found ${pois.length} POIs`);
   } catch (e: any) {
     console.error(`Error: ${e.message}`);
   }
-}
+}*/
