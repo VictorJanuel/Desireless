@@ -1,3 +1,5 @@
+sudo mkdir ./data
+
 #recuperer map
 sudo wget -P ./data http://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf
 
