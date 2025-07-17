@@ -40,6 +40,7 @@ const RoutingMachine = ({ start, end, onChange }: Props) => {
     const routingControl = L.Routing.control({
       waypoints: [L.latLng(start), L.latLng(end)],
       lineOptions: { styles: [{ color: "#6FA1EC", weight: 4 }] },
+      serviceUrl: 'localhost:5000/route/v1/',
       addWaypoints: false,
       draggableWaypoints: true,
       routeWhileDragging: true,

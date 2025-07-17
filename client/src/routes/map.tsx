@@ -10,26 +10,6 @@ export const Route = createFileRoute('/map')({
   component: Map,
 });
 
-  const handleShowPoints = async () => {
-    console.log("Affichage des points d'intérêt ahfjvkzhevfa b");
-    const maLat=48.8566;
-    const maLon=2.3522;
-    console.log("Lat:", maLat, "Lon:", maLon);
-    try {
-      const res = await fetch("http://localhost:3001/getPois?lat="+maLat+"&lon="+maLon);
-      const data = await res.json();
-      console.log("Points d'intérêt récupérés :", data);
-      for (const poi of data) {
-        const marker = L.marker([poi.lat, poi.lon]).bindPopup(poi.name || "Point d'intérêt");
-
-        marker.addTo(map); // 👈 ajoute chaque marker à la carte
-      }
-    } catch (err) {
-      console.error("Erreur API :", err);
-    }
-  };
-
-
 function Map() {
   const buttonStyle: React.CSSProperties = {
     color: 'white',
